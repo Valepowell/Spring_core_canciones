@@ -19,9 +19,9 @@ public class Cancion {
     @Size(min = 5, message = "El título debe tener al menos 5 caracteres")
     private String titulo;
     
-    @NotBlank(message = "El artista es obligatorio")
-    @Size(min = 3, message = "El nombre del artista debe tener al menos 3 caracteres")
-    private String artista;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "artista_id")
+    private Artista artista;
     
     @NotBlank(message = "El álbum es obligatorio")
     @Size(min = 3, message = "El nombre del álbum debe tener al menos 3 caracteres")
@@ -57,14 +57,14 @@ public class Cancion {
     }
     
     // Getters y Setters
+    public Artista getArtista() { return artista;}
+    public void setArtista(Artista artista) { this.artista = artista;}
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
     public String getTitulo() { return titulo; }
     public void setTitulo(String titulo) { this.titulo = titulo; }
-
-    public String getArtista() { return artista; }
-    public void setArtista(String artista) { this.artista = artista; }
 
     public String getAlbum() { return album; }
     public void setAlbum(String album) { this.album = album; }

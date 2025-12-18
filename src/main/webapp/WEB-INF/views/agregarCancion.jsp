@@ -24,8 +24,14 @@ pageEncoding="UTF-8"%>
 
     <p>
         Artista:
-        <form:input path="artista"/>      
-        <form:errors path="artista" cssClass="error"/>
+        <select name="artistaId">
+            <option value="">-- Selecciona un artista --</option>
+            <c:forEach var="a" items="${artistas}">
+                <option value="${a.id}">
+                    ${a.nombre} ${a.apellido}
+                </option>
+            </c:forEach>
+        </select>
     </p>
 
     <p>
